@@ -31,9 +31,9 @@ const Blog = ({ refresher, isAuthorized }) => {
         <div className='blog'>
             <h1 style={{ display: "inline" }}>{blog.date}</h1>
 
-            <Link to="/blogs" style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }} ><button className="button">Go back</button></Link>
-            {isAuthorized && <button style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }} className="button" onClick={onDelete}>Delete Blog</button>}
-            {isAuthorized && <Link to={"/updateblog/" + _id} style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }}><button className="button" >Update Blog</button></Link>}
+            <Link to="/blogs" style={{ display: "inline", float: "right", color: "white" }} ><button className="button">Go back</button></Link>
+            {isAuthorized && <button style={{ display: "inline", float: "right", color: "white" }} className="button" onClick={onDelete}>Delete Blog</button>}
+            {isAuthorized && <Link to={"/updateblog/" + _id} style={{ display: "inline", float: "right", color: "white" }}><button className="button" >Update Blog</button></Link>}
             <hr />
             <div className='blogBlock' style={{ padding: "1%" }}>
                 <h2>{blog.title}</h2>
