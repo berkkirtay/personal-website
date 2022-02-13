@@ -52,6 +52,10 @@ const Home = () => {
                     <li>
                         <a href="https://github.com/berkkirtay/enigmamachine" target="_blank" rel="noopener noreferrer">Enigma Machine Emulator <i style={{ zoom: "0.9" }} class="fas fa-external-link-alt"></i></a>
                     </li>
+
+                    <li>
+                        <a href="https://github.com/berkkirtay/berkcoin" target="_blank" rel="noopener noreferrer">Berkcoin Decentralized App <i style={{ zoom: "0.9" }} class="fas fa-external-link-alt"></i></a>
+                    </li>
                 </ul>
             </div>
             <hr />

@@ -23,30 +23,26 @@ export const Auth = ({ isAuthorized, setAuthorization }) => {
         navigate.push("/authorization");
     };
 
-    if (isAuthorized === true) {
-        return (
-            <div className="contactForm">
-                <h1 style={{ display: "inline", textDecoration: "none", color: "white" }}>Authorization</h1>
-                <Link to="/" style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }}><button className="button">Go back</button></Link>
-                <hr />
+    return (
+        <div className="contactForm">
+            <h1 style={{ display: "inline", textDecoration: "none", color: "white" }}>Authorization</h1>
+            <Link to="/" style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
+            <hr />
+            {isAuthorized === true ? (
                 <form className="contactForm" onSubmit={onEnd}>
                     <label>You are already authorized. Do you want to end this session?</label>
                     <input id="send" type="submit" value="End Session" />
                 </form>
-            </div >
-        );
-    }
-    return (
-        <div className="contactForm">
-            <h1 style={{ display: "inline", textDecoration: "none", color: "white" }}>Authorization</h1>
-            <Link to="/" style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }}><button className="button">Go back</button></Link>
-            <hr />
-            <form className="contactForm" onSubmit={onSubmit}>
-                <label>Your token:</label>
-                <input type="text" name="token" required
-                    value={token} onChange={(e) => setToken(e.target.value)} />
-                <input id="send" type="submit" value="Submit" />
-            </form>
+            ) :
+                (
+                    <form className="contactForm" onSubmit={onSubmit}>
+                        <label>Your token:</label>
+                        <input type="text" name="token" required
+                            value={token} onChange={(e) => setToken(e.target.value)} />
+                        <input id="send" type="submit" value="Submit" />
+                    </form>
+                )
+            }
         </div >
     );
 };

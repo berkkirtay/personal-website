@@ -81,10 +81,10 @@ export const AddBlog = ({ refresher, updateFlag }) => {
                 <h1 style={{ display: "inline" }}>{!updateFlag && "Add Blog"}{updateFlag && "Update Blog"}</h1>
             </Link>
             {updateFlag &&
-                <Link to={"/blogs/" + _id} style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }}><button className="button">Go back</button></Link>
+                <Link to={"/blogs/" + _id} style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
             }
             {!updateFlag &&
-                <Link to={"/blogs/"} style={{ display: "inline", float: "right", marginTop: "1.4%", color: "white" }}><button className="button">Go back</button></Link>
+                <Link to={"/blogs/"} style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
             }
             <hr />
             <form onSubmit={onSubmit}>
