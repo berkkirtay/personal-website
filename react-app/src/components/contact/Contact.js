@@ -30,7 +30,7 @@ const Contact = () => {
             </Link>
             <Link to="/" style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
 
-            <hr />
+            <hr id='bloghr' />
             <form className="contactForm" onSubmit={onSubmit}>
                 <label>Your name:</label>
                 <input type="text" name="name" required

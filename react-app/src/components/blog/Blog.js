@@ -34,7 +34,7 @@ const Blog = ({ refresher, isAuthorized }) => {
             <Link to="/blogs" style={{ display: "inline", float: "right", color: "white" }} ><button className="button">Go back</button></Link>
             {isAuthorized && <button style={{ display: "inline", float: "right", color: "white" }} className="button" onClick={onDelete}>Delete Blog</button>}
             {isAuthorized && <Link to={"/updateblog/" + _id} style={{ display: "inline", float: "right", color: "white" }}><button className="button" >Update Blog</button></Link>}
-            <hr />
+            <hr id='bloghr' />
             <div className='blogBlock' style={{ padding: "1%" }}>
                 <h2>{blog.title}</h2>
                 {blog.content?.map((field) => {

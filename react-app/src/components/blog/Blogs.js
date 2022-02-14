@@ -16,7 +16,7 @@ const Blogs = ({ blogs, setBlogs, refresh, isAuthorized }) => {
                 </Link>
                 <Link to="/" style={{ display: "inline", float: "right", color: "white" }}><button className="button" >Go back</button></Link>
                 {isAuthorized && <Link to="/addblog" style={{ display: "inline", float: "right", color: "white" }}><button className="button" >Add a new Blog</button></Link>}
-                <hr />
+                <hr id='bloghr' />
                 <ul>
                     {blogs.slice(0).reverse().map((blog) => (
                         <BlogsTask blog={blog} />
