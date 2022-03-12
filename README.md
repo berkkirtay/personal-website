@@ -1,5 +1,5 @@
 # My Personal Website
-### This repository includes source code of my personal website. MERN stack has been used to develop this website project.
+**This repository includes source code of my personal website. MERN stack is used to develop this website.**
 
 ## Front Page Section:
 This section is a static page that you can directly change from the source code.
