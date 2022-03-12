@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import BlogsTask from "./BlogsTask";
+import Footer from "../footer/Footer";
 import { getBlogs } from '../../helpers/RequestManager'
 
 const Blogs = ({ blogs, setBlogs, refresh, isAuthorized }) => {
@@ -11,18 +12,19 @@ const Blogs = ({ blogs, setBlogs, refresh, isAuthorized }) => {
     return (
         <div className="blogs" >
             <div className="projectLinksList">
-                <Link to="/blogs" style={{ textDecoration: "none", color: "white" }}>
-                    <h1 style={{ display: "inline" }}>My Blog</h1>
-                </Link>
-                <Link to="/" style={{ display: "inline", float: "right", color: "white" }}><button className="button" >Go back</button></Link>
-                {isAuthorized && <Link to="/addblog" style={{ display: "inline", float: "right", color: "white" }}><button className="button" >Add a new Blog</button></Link>}
-                <hr id='bloghr' />
+                {isAuthorized &&
+                    <>
+                        <Link to="/addblog" style={{ display: "inline-block", color: "white" }}><button className="button" >Add a new Blog</button></Link>
+                        <hr id='bloghr' />
+                    </>
+                }
                 <ul>
                     {blogs.slice(0).reverse().map((blog) => (
                         <BlogsTask blog={blog} />
                     ))}
                 </ul>
             </div >
+            <Footer />
         </div >
     )
 }

@@ -1,7 +1,7 @@
 const Image = ({ url }) => {
     return (
         <img src={url}
-            width="90%" height="40%" style={{ display: "block", margin: "auto", padding: "2%" }} />
+            width="80%" height="40%" style={{ display: "block", margin: "0 auto" }} />
     );
 };
 

@@ -4,7 +4,9 @@ import Contact from "./components/contact/Contact";
 import Home from "./components/Home"
 import Blogs from "./components/blog/Blogs";
 import Blog from "./components/blog/Blog";
-import Header from "./components/header/Header";
+import ScrollToTop from "./components/tools/ScrollToTop"
+import { Nav } from "./components/Nav";
+
 import { AddBlog } from "./components/blog/BlogComponents/AddBlog";
 import { checkAuth } from "./helpers/RequestManager";
 import { Auth } from "./components/auth/Auth";
@@ -22,12 +24,14 @@ const App = () => {
   return (
     <div id="parent">
       <Router>
+        <ScrollToTop />
+        <Nav />
         <Switch>
-          <Route path="/blogs/:_id">
+          <Route path="/blog/:_id">
             <Blog refresher={() => setRefresh(!refresh)} blogs={blogs} isAuthorized={isAuthorized} />
           </Route>
 
-          <Route path="/blogs">
+          <Route path="/blog">
             <Blogs blogs={blogs} setBlogs={setBlogs} refresh={refresh} isAuthorized={isAuthorized} />
           </Route>
 
@@ -47,10 +51,10 @@ const App = () => {
           </Route>
 
           <Route path="/">
-            <Header />
             <Home />
           </Route>
         </Switch>
+        <ScrollToTop />
       </Router>
     </div>
   );

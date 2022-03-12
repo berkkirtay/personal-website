@@ -10,34 +10,6 @@ export const AddBlog = ({ refresher, updateFlag }) => {
     let navigate = useHistory();
     const { _id } = useParams();
 
-    const parseContent = (content) => {
-        const parsedContents = [];
-        const lines = content.split('\n');
-        let text = "";
-        lines.forEach((field) => {
-            var tokens = field.split('|');
-            if (tokens[0] === "img") {
-                if (text !== "") {
-                    parsedContents.push(text);
-                    text = "";
-                }
-                parsedContents.push(field + "\n");
-            }
-            else {
-                text += field;
-            }
-        });
-        parsedContents.push(text);
-        return parsedContents;
-    }
-
-    const stringfyContentArr = (content) => {
-        let strcontent = "";
-        content?.forEach((line) => {
-            strcontent += line + "\n";
-        })
-        return strcontent;
-    }
 
     useEffect(() => {
         if (updateFlag === true) {
@@ -49,7 +21,7 @@ export const AddBlog = ({ refresher, updateFlag }) => {
         if (blog) {
             setTitle(blog?.title);
             setDate(blog?.date);
-            setContent(stringfyContentArr(blog?.content));
+            setContent(blog?.content);
             console.log(blog)
         }
     }, [blog])
@@ -58,7 +30,7 @@ export const AddBlog = ({ refresher, updateFlag }) => {
         e.preventDefault();
         const blogBody = {
             "title": title,
-            "content": parseContent(content),
+            "content": content,
             "date": date
         }
         if (updateFlag === true) {
@@ -72,22 +44,14 @@ export const AddBlog = ({ refresher, updateFlag }) => {
         setDate('');
         setContent('');
         refresher();
-        navigate.push("/blogs");
+        navigate.push("/blog");
     }
 
     return (
-        <div className="contactForm">
-            <Link to="/contact" style={{ textDecoration: "none", color: "white" }}>
-                <h1 style={{ display: "inline" }}>{!updateFlag && "Add Blog"}{updateFlag && "Update Blog"}</h1>
-            </Link>
-            {updateFlag &&
-                <Link to={"/blogs/" + _id} style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
-            }
-            {!updateFlag &&
-                <Link to={"/blogs/"} style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
-            }
+        <div>
+            <h1 tyle={{ display: "block", margin: "0 auto" }}>{!updateFlag && "Add Blog"}{updateFlag && "Update Blog"}</h1>
             <hr />
-            <form onSubmit={onSubmit}>
+            <form className="contactForm" onSubmit={onSubmit}>
                 <label>Title:</label>
                 <input type="text" required
                     value={title} onChange={(e) => setTitle(e.target.value)} />

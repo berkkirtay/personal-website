@@ -1,20 +1,20 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,  'Helvetica', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica", "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
 
   line-height: 1.4em;
   letter-spacing: 0.7px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- /* background-color: rgb(216, 216, 179);   */
+  /* background-color: rgb(216, 216, 179);   */
   background-color: #101820ff; /*#1b1c20*/
-  color:white;
+  color: white;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -25,8 +25,8 @@ header {
 #parent {
   border: 1px solid rgb(173, 172, 172);
   border-radius: 6px;
-  box-sizing:border-box;
-  width: 43%;
+  box-sizing: border-box;
+  width: 45%;
   padding: 1%;
   margin: 1% auto;
 }
@@ -41,21 +41,21 @@ header {
 
 .projectLinksList li {
   margin: 1.5%;
-  color:#006b38ff;
+  color: rgb(2, 129, 68);
 }
 
 .projectLinksList a {
-  color:rgb(16, 133, 76);
+  color: rgb(20, 175, 100);
   text-decoration: none;
 }
 
 .projectLinksList a:hover {
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 .contactForm {
   max-height: 1000px;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   justify-content: center;
   display: block;
@@ -65,14 +65,15 @@ header {
   margin: 8px 0;
 }
 
-.contactForm input, textarea {
+.contactForm input,
+textarea {
   white-space: pre-wrap;
   width: 100%;
   padding: 10px 20px;
   margin: 8px 0;
   border: 1px solid rgb(173, 172, 172);
   background-color: #3c3f4b;
-  color:white;
+  color: white;
   border-radius: 5px;
   box-sizing: border-box;
   display: inline-block;
@@ -89,37 +90,13 @@ header {
 
 .contactForm #send:focus-visible {
   box-shadow: #222222 0 0 0 2px, rgba(15, 1, 34, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
+  transition: box-shadow 0.2s;
 }
 
 .contactForm #send:active {
   background-color: #2c324d;
   border-color: #000000;
-  transform: scale(.96);
-}
-
-footer {
-  background-color: rgb(30, 49, 68);
-  height: 40px;
-  border-radius: 7px;
-  padding: 5px;
-}
-
-footer a {
-  float: right;
-  margin-left: 10px;
-}
-
-.link {
-  display: inline;
-  float:left;
-  margin: 0.5%;
-  color: white;
-  text-decoration:none;
-}
-
-.link:hover {
-  text-decoration:underline;
+  transform: scale(0.96);
 }
 
 .button {
@@ -136,26 +113,50 @@ footer a {
   padding: 8px 23px;
   position: relative;
   touch-action: manipulation;
-  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
   user-select: none;
   -webkit-user-select: none;
   width: auto;
 }
 
-.button:hover{
+.button:hover {
   background-color: #25293f;
 }
 
-
 .button:focus-visible {
   box-shadow: #222222 0 0 0 2px, rgba(15, 1, 34, 0.8) 0 0 0 4px;
-  transition: box-shadow .2s;
+  transition: box-shadow 0.2s;
 }
 
 .button:active {
   background-color: #2c324d;
   border-color: #000000;
-  transform: scale(.96);
+  transform: scale(0.96);
+}
+
+footer {
+  background-color: rgb(30, 49, 68);
+  height: 40px;
+  border-radius: 7px;
+  padding: 5px;
+}
+
+footer a {
+  float: right;
+  margin-left: 10px;
+}
+
+.link {
+  display: inline;
+  float: left;
+  margin: 0.5%;
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .blogBlock {
@@ -164,19 +165,128 @@ footer a {
 }
 
 #bloghr {
-  margin-top: 3%;
+  margin-top: 2%;
   margin-bottom: 1%;
 }
 
-@media screen and (orientation: portrait){
+.italic {
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#profile {
+  display: inline-block;
+}
+
+#profile-child-pfp {
+  width: 20%;
+  float: left;
+  padding: 10px 10px 0 10px;
+}
+
+#profile-child-pfp img {
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 2%;
+}
+
+#profile-child-desc {
+  width: 75%;
+  float: left;
+  position: relative;
+  padding: 1%;
+  padding-top: 6%;
+}
+
+ul.nav {
+  list-style-type: none;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.nav a,
+#navName {
+  color: white;
+  text-align: center;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#navName:hover,
+li.nav a:hover:not(li.nav a:active) {
+  color: #263485;
+}
+
+#navName:active,
+li.nav a:active {
+  color: #25293f;
+}
+
+.hamburgerMenu {
+  display: none;
+}
+
+@media screen and (max-width: 1600px) {
   #parent {
-    font-size:150%;
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #parent {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #parent {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #parent {
+    width: 98%;
+  }
+}
+
+@media screen and (max-device-width: 768px),
+  screen and (orientation: portrait) {
+  #profile {
+    display: inline-block;
+  }
+
+  #profile-child-pfp {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 0 0 0;
+    text-align: center;
+  }
+
+  #profile-child-pfp img {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  #profile-child-desc {
+    display: inline-block;
+    margin: 1%;
+    width: 100%;
+    zoom: 60%;
+    padding: 1%;
+  }
+
+  #parent {
+    font-size: 150%;
     border: none;
-    box-sizing:border-box;
+    box-sizing: border-box;
     width: 100%;
     height: 110%;
     padding: 3%;
-    margin: 0 auto;   
+    margin: 0 auto;
     line-height: 2em;
     letter-spacing: 1.8px;
     zoom: 120%;
@@ -187,25 +297,24 @@ footer a {
   }
 
   .aboutme {
-    font-size:150%;
+    font-size: 150%;
   }
 
   .projectLinksList {
     font-size: 139%;
   }
 
-  .contactForm{
+  .contactForm {
     zoom: 130%;
   }
 
   .blog {
-   font-size: 150%;
+    font-size: 150%;
   }
 
   .blog h1 {
-    font-size: 80%;
+    font-size: 130%;
   }
-
 
   a {
     line-height: 1.5em;
@@ -220,9 +329,8 @@ footer a {
     zoom: 140%;
   }
 
-
   footer {
-    zoom : 130%;
+    zoom: 130%;
     padding-bottom: 4%;
   }
 
@@ -236,12 +344,12 @@ footer a {
     margin-right: 10px;
   }
 
-  .blog p, .blog h1, .blog h2, .blog h3, .blog h4, .blog a, .blog i {
-   /* font-size:70%; */
-  }  
-}
-
-.italic {
-  font-style: italic;
-  font-family: "Times New Roman", Times, serif;
+  .hamburgerMenu {
+    display: block;
+    position: relative;
+    float: right;
+    padding: 5px 10px 0 10px;
+    zoom: 130%;
+    z-index: 10;
+  }
 }

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import sha256 from 'crypto-js/sha256';
 import { setAuth } from "../../helpers/RequestManager";
 import { endAuth } from "../../helpers/RequestManager";
+import Footer from "../footer/Footer";
 
 export const Auth = ({ isAuthorized, setAuthorization }) => {
     const [token, setToken] = useState("");
@@ -24,10 +25,7 @@ export const Auth = ({ isAuthorized, setAuthorization }) => {
     };
 
     return (
-        <div className="contactForm">
-            <h1 style={{ display: "inline", textDecoration: "none", color: "white" }}>Authorization</h1>
-            <Link to="/" style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
-            <hr />
+        <div>
             {isAuthorized === true ? (
                 <form className="contactForm" onSubmit={onEnd}>
                     <label>You are already authorized. Do you want to end this session?</label>
@@ -36,13 +34,14 @@ export const Auth = ({ isAuthorized, setAuthorization }) => {
             ) :
                 (
                     <form className="contactForm" onSubmit={onSubmit}>
-                        <label>Your token:</label>
+                        <label>Authorization token:</label>
                         <input type="text" name="token" required
                             value={token} onChange={(e) => setToken(e.target.value)} />
                         <input id="send" type="submit" value="Submit" />
                     </form>
                 )
             }
+            <Footer />
         </div >
     );
 };

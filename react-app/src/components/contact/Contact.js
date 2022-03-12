@@ -1,36 +1,27 @@
-import { Link } from "react-router-dom"
 import { useState } from "react"
-import { useHistory } from "react-router-dom";
-import { sendEmail } from "../../helpers/RequestManager";
+import emailjs from 'emailjs-com';
+import Footer from "../footer/Footer";
 
 const Contact = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [text, setText] = useState("");
-    let navigate = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const emailBody = {
-            name: name,
-            email: email,
-            text: text
-        };
-        sendEmail(emailBody);
+        emailjs.sendForm('service_hjgtclq', 'template_jxjide6', e.target, 'user_LwYSRs6src8JJfa5nOOpf')
+            .then((result) => {
+                alert("Email has been sent. Thanks!")
+            }, (error) => {
+                alert("Email couldn't be sent.")
+            });
         setName('');
         setEmail('');
         setText('');
-        navigate.push("/");
     }
 
     return (
-        <div className="contactForm">
-            <Link to="/contact" style={{ textDecoration: "none", color: "white" }}>
-                <h1 style={{ display: "inline" }}>Contact me</h1>
-            </Link>
-            <Link to="/" style={{ display: "inline", float: "right", color: "white" }}><button className="button">Go back</button></Link>
-
-            <hr id='bloghr' />
+        <div>
             <form className="contactForm" onSubmit={onSubmit}>
                 <label>Your name:</label>
                 <input type="text" name="name" required
@@ -43,6 +34,7 @@ const Contact = () => {
                     value={text} onChange={(e) => setText(e.target.value)}></textarea>
                 <input id="send" type="submit" value="Submit" />
             </form>
+            <Footer />
         </div >
     )
 }

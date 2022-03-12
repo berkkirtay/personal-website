@@ -5,10 +5,11 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: "true"
     },
-    content:
-        [{
-            type: String
-        }],
+    content: {
+        type: String,
+        required: "true"
+    }
+    ,
     date: {
         type: String,
         required: "true"
