@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { useEffect, useState } from "react";
 import Contact from "./components/contact/Contact";
-import Home from "./components/Home"
+import Home from "./components/home/Home"
 import Blogs from "./components/blog/Blogs";
 import Blog from "./components/blog/Blog";
 import ScrollToTop from "./components/tools/ScrollToTop"
-import { Nav } from "./components/Nav";
-
+import { Nav } from "./components/nav/Nav";
 import { AddBlog } from "./components/blog/BlogComponents/AddBlog";
 import { checkAuth } from "./helpers/RequestManager";
 import { Auth } from "./components/auth/Auth";

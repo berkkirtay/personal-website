@@ -1,5 +1,5 @@
-import Footer from "./footer/Footer";
-import pfp from "../assets/img/pfp.jpg";
+import Footer from "../footer/Footer";
+import pfp from "../../assets/img/pfp.jpg";
 const Home = () => {
     return (
         <>

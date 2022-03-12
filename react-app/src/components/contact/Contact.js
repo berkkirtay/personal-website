@@ -1,23 +1,26 @@
 import { useState } from "react"
-import emailjs from 'emailjs-com';
+import { useHistory } from "react-router-dom";
+import { sendEmail } from "../../helpers/RequestManager";
 import Footer from "../footer/Footer";
 
 const Contact = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [text, setText] = useState("");
+    let navigate = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault();
-        emailjs.sendForm('service_hjgtclq', 'template_jxjide6', e.target, 'user_LwYSRs6src8JJfa5nOOpf')
-            .then((result) => {
-                alert("Email has been sent. Thanks!")
-            }, (error) => {
-                alert("Email couldn't be sent.")
-            });
+        const emailBody = {
+            name: name,
+            email: email,
+            text: text
+        };
+        sendEmail(emailBody);
         setName('');
         setEmail('');
         setText('');
+        navigate.push("/");
     }
 
     return (
