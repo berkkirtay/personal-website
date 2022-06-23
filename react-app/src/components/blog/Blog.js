@@ -22,6 +22,7 @@ const Blog = ({ refresher, isAuthorized }) => {
     useEffect(() => {
         getBlog(_id, setBlog);
     }, []);
+
     return (
         <div className='blog'>
             {isAuthorized &&

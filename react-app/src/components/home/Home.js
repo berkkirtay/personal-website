@@ -30,7 +30,7 @@ const Home = () => {
             </div>
 
             <div className="projectLinksList">
-                <h4 style={{ paddingLeft: "1%" }}>Check out some of my projects on GitHub:</h4>
+                <h4 style={{ paddingLeft: "1%" }}>Check out my projects on GitHub:</h4>
                 <ul>
                     <li>
                         <a href="https://github.com/berkkirtay/basicblockchain" target="_blank" rel="noopener noreferrer">A Proof-of-Work Based Blockchain
@@ -60,6 +60,10 @@ const Home = () => {
 
                     <li>
                         <a href="https://github.com/berkkirtay/berkcoin" target="_blank" rel="noopener noreferrer">Berkcoin Decentralized App <i style={{ zoom: "0.9" }} className="fas fa-external-link-alt"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="https://github.com/berkkirtay/personal-website" target="_blank" rel="noopener noreferrer">Source Code of This Website <i style={{ zoom: "0.9" }} className="fas fa-external-link-alt"></i></a>
                     </li>
                 </ul>
                 <Footer />

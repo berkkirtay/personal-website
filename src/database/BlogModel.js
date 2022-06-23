@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: "true"
     },
-    content: {
+    shortContent: {
         type: String,
         required: "true"
     }
