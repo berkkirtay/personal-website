@@ -1,10 +1,9 @@
 import express from "express";
 import { readBlogContent, uploadBlogContent } from '../helpers/IOHelper';
+import { Blog } from "../database/BlogModel";
+
 const protectedRouter = express.Router();
 const unprotectedRouter = express.Router();
-
-const mongoose = require("../database/BlogModel").mongoose;
-const Blog = mongoose.model("Blog");
 
 unprotectedRouter.get("/getblogs", (req: express.Request, res: express.Response) => {
     Blog.find((err: any, blogs: any) => {
@@ -17,19 +16,25 @@ unprotectedRouter.get("/getblogs", (req: express.Request, res: express.Response)
 
 unprotectedRouter.get("/blog/:blogId", (req: express.Request, res: express.Response) => {
     const param = req.params.blogId;
-    Blog.findOne({ _id: param }).then(async (data: { _id: { toString: () => string; }; title: string; date: string; }) => {
-        const content = await readBlogContent(data._id.toString());
-        const blog = {
-            _id: data._id.toString(),
-            content: content,
-            title: data.title,
-            date: data.date
-        }
-        res.status(200).send(blog);
-    }).catch((err: any) => {
-        console.log(err);
-        res.status(500).send();
-    });
+    Blog.findOne({ _id: param })
+        .then(async (data) => {
+            if (data) {
+                const content = await readBlogContent(data._id.toString());
+                const blog = {
+                    _id: data._id.toString(),
+                    content: content,
+                    title: data.title,
+                    date: data.date
+                }
+                res.status(200).send(blog);
+            }
+            else {
+                throw "Document doesn't exist!";
+            }
+        }).catch((err: any) => {
+            console.log(err);
+            res.status(500).send();
+        });
 });
 
 protectedRouter.post("/postblog", (req: express.Request, res: express.Response) => {
@@ -37,7 +42,7 @@ protectedRouter.post("/postblog", (req: express.Request, res: express.Response) 
     blog.title = req.body.title;
     blog.shortContent = req.body.content.slice(0, 200);
     blog.date = req.body.date;
-    blog.save(async (err: any, success: { id: string; }) => {
+    blog.save(async (err: any, success) => {
         if (err) {
             console.log(err);
         }
@@ -51,7 +56,7 @@ protectedRouter.post("/postblog", (req: express.Request, res: express.Response) 
 protectedRouter.get("/deleteblog/:blogId", (req: express.Request, res: express.Response) => {
     const param = req.params.blogId;
     console.log(param)
-    Blog.deleteOne({ _id: param }).then((data: string) => {
+    Blog.deleteOne({ _id: param }).then(data => {
         res.status(200).send(data);
     }).catch((err: any) => {
         console.log(err);

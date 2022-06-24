@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import { model, Schema, Model, Document } from 'mongoose';
+import { IBlog } from "./IBlog";
 
-const blogSchema = new mongoose.Schema({
+const blogSchema = new Schema({
     title: {
         type: String,
         required: "true"
@@ -8,16 +9,12 @@ const blogSchema = new mongoose.Schema({
     shortContent: {
         type: String,
         required: "true"
-    }
-    ,
+    },
     date: {
         type: String,
         required: "true"
     }
 });
 
-mongoose.model("Blog", blogSchema);
+export const Blog = model<IBlog>("Blog", blogSchema);
 
-module.exports = {
-    mongoose: mongoose,
-}
