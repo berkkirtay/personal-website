@@ -1,11 +1,11 @@
 # My Personal Website
-**This repository includes source code of my personal website. MERN stack is used to develop this website.**
+**This repository includes source code of my personal website.**
 
 ## Front Page Section:
 This section is a static page that you can directly change from the source code.
 
 ## Blog Section:
-Web Server lets users to modify blog section in ways such as adding, updating or deleting blogs. This section uses database for those operations. To use this feature, user should be authorized.
+Web Server lets users to modify blog section in ways such as adding, updating or deleting blogs. This section uses a mongodb database for those controls. To use this feature, user should be authorized.
 
 ## Authorization Section:
 To be authorized please use /authorization endpoint. Authorization token can be arranged via envrionment variables. You can see the details in the source code.
