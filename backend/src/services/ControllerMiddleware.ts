@@ -1,11 +1,10 @@
 import * as services from "./HttpMiddleware"
 import express from "express";
+import { AuthorizationController } from "../controllers/AuthorizationController";
+import { ProtectedBlogController, UnprotectedBlogController } from "../controllers/BlogController";
+import { ContactController } from "../controllers/ContactController";
 
 export const app = services.app;
-const AuthorizationController = require("../controllers/AuthorizationController");
-const ProtectedBlogController = require("../controllers/BlogController").protectedprotectedRouter;
-const UnprotectedBlogController = require("../controllers/BlogController").unprotectedprotectedRouter;
-const ContactController = require("../controllers/ContactController");
 
 const isAuthorized = (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.session.isAuthorized === true) {

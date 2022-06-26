@@ -1,7 +1,8 @@
 import express from "express";
 import { Session } from "../database/Session";
 import cors from "cors";
-require('dotenv').config()
+import dotenv from "dotenv";
+dotenv.config();
 
 export const app = express();
 

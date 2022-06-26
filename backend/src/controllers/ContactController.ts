@@ -1,7 +1,7 @@
 import express from "express";
 import nodemailer from "nodemailer";
 
-const router = express.Router();
+export const ContactController = express.Router();
 
 var transporter = nodemailer.createTransport({
     host: 'smtp-mail.outlook.com',
@@ -33,7 +33,7 @@ const sendMail = async (name: string, email: string, text: string) => {
     });
 };
 
-router.post('/', async (req: express.Request, res: express.Response) => {
+ContactController.post('/', async (req: express.Request, res: express.Response) => {
     if (req.body.name && req.body.email && req.body.text) {
         try {
             await sendMail(req.body.name, req.body.email, req.body.text);
@@ -47,5 +47,3 @@ router.post('/', async (req: express.Request, res: express.Response) => {
         }
     }
 });
-
-module.exports = router;

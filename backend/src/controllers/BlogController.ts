@@ -2,10 +2,10 @@ import express from "express";
 import { deleteBlogContent, readBlogContent, uploadBlogContent } from '../helpers/IOHelper';
 import { Blog } from "../models/BlogModel";
 
-const protectedRouter = express.Router();
-const unprotectedRouter = express.Router();
+export const ProtectedBlogController = express.Router();
+export const UnprotectedBlogController = express.Router();
 
-unprotectedRouter.get("/getblogs", async (req: express.Request, res: express.Response) => {
+UnprotectedBlogController.get("/getblogs", async (req: express.Request, res: express.Response) => {
     Blog.find((err: any, blogs: any) => {
         if (err) {
             res.status(500).send(err);
@@ -20,7 +20,7 @@ unprotectedRouter.get("/getblogs", async (req: express.Request, res: express.Res
     });
 });
 
-unprotectedRouter.get("/blog/:blogId", async (req: express.Request, res: express.Response) => {
+UnprotectedBlogController.get("/blog/:blogId", async (req: express.Request, res: express.Response) => {
     const param = req.params.blogId;
     Blog.findOne({ _id: param })
         .then(async (data) => {
@@ -43,7 +43,7 @@ unprotectedRouter.get("/blog/:blogId", async (req: express.Request, res: express
         });
 });
 
-protectedRouter.post("/postblog", async (req: express.Request, res: express.Response) => {
+ProtectedBlogController.post("/postblog", async (req: express.Request, res: express.Response) => {
     // A mapper library can be used here.
     if (req.body.title &&
         req.body.content &&
@@ -69,7 +69,7 @@ protectedRouter.post("/postblog", async (req: express.Request, res: express.Resp
     }
 });
 
-protectedRouter.get("/deleteblog/:blogId", async (req: express.Request, res: express.Response) => {
+ProtectedBlogController.get("/deleteblog/:blogId", async (req: express.Request, res: express.Response) => {
     if (req.params.blogId) {
         Blog.deleteOne({ _id: req.params.blogId }).then(async (data) => {
             if (data) {
@@ -89,7 +89,7 @@ protectedRouter.get("/deleteblog/:blogId", async (req: express.Request, res: exp
     }
 })
 
-protectedRouter.post("/updateblog", async (req: express.Request, res: express.Response) => {
+ProtectedBlogController.post("/updateblog", async (req: express.Request, res: express.Response) => {
     if (req.body.blogId &&
         req.body.blog.title &&
         req.body.blog.date &&
@@ -114,8 +114,3 @@ protectedRouter.post("/updateblog", async (req: express.Request, res: express.Re
         res.status(404).send({ err: "Incorrect request body usage!" });
     }
 });
-
-module.exports = {
-    protectedprotectedRouter: protectedRouter,
-    unprotectedprotectedRouter: unprotectedRouter
-};

@@ -1,9 +1,9 @@
 import express from "express";
 import crypt from "crypto-js";
 
-const router = express.Router();
+export const AuthorizationController = express.Router();
 
-router.post("/authorize", (req: express.Request, res: express.Response) => {
+AuthorizationController.post("/authorize", (req: express.Request, res: express.Response) => {
     const authKey = req.body.Authorization;
     const hashedToken = crypt.SHA256(process.env.AUTH_KEY as string).toString();
 
@@ -18,7 +18,7 @@ router.post("/authorize", (req: express.Request, res: express.Response) => {
     }
 });
 
-router.get("/checkauth", (req: express.Request, res: express.Response) => {
+AuthorizationController.get("/checkauth", (req: express.Request, res: express.Response) => {
     if (req.session.isAuthorized === true) {
         res.status(200).send({ result: "Authorized" });
     }
@@ -27,7 +27,7 @@ router.get("/checkauth", (req: express.Request, res: express.Response) => {
     }
 });
 
-router.get("/destroy", (req: express.Request, res: express.Response) => {
+AuthorizationController.get("/destroy", (req: express.Request, res: express.Response) => {
     req.session.isAuthorized = false;
     req.session.destroy(err => {
         if (err) {
@@ -39,5 +39,3 @@ router.get("/destroy", (req: express.Request, res: express.Response) => {
         }
     });
 });
-
-module.exports = router;
