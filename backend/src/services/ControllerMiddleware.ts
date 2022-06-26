@@ -24,6 +24,7 @@ app.use("/", isAuthorized, ProtectedBlogController);
 // If server receives an undefined request, it will return a 404 error.
 
 app.use('/', (req, res) => {
-    return res.status(404).send("The requested url does not exist!");
+    return res.status(404)
+        .send({ err: "The requested address does not exist!" });
 })
 

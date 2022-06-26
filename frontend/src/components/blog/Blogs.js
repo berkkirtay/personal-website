@@ -7,7 +7,7 @@ import { getBlogs } from '../../helpers/RequestManager'
 const Blogs = ({ blogs, setBlogs, refresh, isAuthorized }) => {
     useEffect(() => {
         getBlogs(setBlogs);
-    }, [refresh])
+    }, [refresh, setBlogs])
 
     return (
         <div className="blogs" >

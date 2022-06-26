@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getBlog, postBlog, updateBlog } from "../../../helpers/RequestManager";
 
 export const AddBlog = ({ refresher, updateFlag }) => {
@@ -15,7 +15,7 @@ export const AddBlog = ({ refresher, updateFlag }) => {
         if (updateFlag === true) {
             getBlog(_id, setBlog);
         }
-    }, []);
+    }, [_id, updateFlag]);
 
     useEffect(() => {
         if (blog) {
