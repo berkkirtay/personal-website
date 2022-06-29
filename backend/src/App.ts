@@ -1,4 +1,4 @@
-import { app } from "./services/ControllerMiddleware";
+import { app } from "./middlewares/ControllerMiddleware";
 import dotenv from "dotenv";
 dotenv.config();
 

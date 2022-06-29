@@ -1,20 +1,7 @@
 import express from "express";
-import nodemailer from "nodemailer";
+import { transporter } from "../services/MailService";
 
 export const ContactController = express.Router();
-
-var transporter = nodemailer.createTransport({
-    host: 'smtp-mail.outlook.com',
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_FROM,
-        pass: process.env.EMAIL_PASS
-    },
-    port: 587,
-    tls: {
-        ciphers: 'SSLv3'
-    }
-});
 
 const sendMail = async (name: string, email: string, text: string) => {
     var mailOptions = {

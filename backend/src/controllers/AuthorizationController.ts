@@ -1,16 +1,43 @@
 import express from "express";
 import crypt from "crypto-js";
+import { confirmOTP, sendOTP } from "../helpers/OTPHelper";
+import { Types } from "mongoose";
+import { IOTPModel } from "../models/OTPModel";
 
 export const AuthorizationController = express.Router();
 
-AuthorizationController.post("/authorize", (req: express.Request, res: express.Response) => {
+AuthorizationController.post("/authorize", async (req: express.Request, res: express.Response) => {
     const authKey = req.body.Authorization;
+    const otpKey = req.body.OTP;
     const hashedToken = crypt.SHA256(process.env.AUTH_KEY as string).toString();
-
     if (authKey && hashedToken === authKey) {
-        console.log("User Authorized.");
-        req.session.isAuthorized = true;
-        res.status(200).send({ result: "User Authorized." });
+        const otpResult = await confirmOTP() as
+            (IOTPModel & {
+                _id: Types.ObjectId;
+            }) | null;
+
+        if (otpResult) {
+            if (otpKey && otpResult.otp === otpKey) {
+                console.log("User Authorized.");
+                req.session.isAuthorized = true;
+                res.status(200).send({
+                    status: "authorized",
+                    result: "User Authorized."
+                });
+            }
+            else {
+                res.status(401).send({ err: "Authorization Error! Wrong OTP." });
+                console.log("Authorization Error! Wrong OTP.");
+            }
+        }
+        else {
+            sendOTP();
+            console.log("OTP is sent.");
+            res.status(200).send({
+                status: "otp",
+                result: "OTP is sent"
+            });
+        }
     }
     else {
         res.status(401).send({ err: "Authorization Error!" });

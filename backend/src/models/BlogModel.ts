@@ -1,5 +1,10 @@
 import { model, Schema, Model, Document } from 'mongoose';
-import { IBlog } from "./IBlog";
+
+interface IBlog extends Document {
+    title: string;
+    shortContent: string;
+    date: string;
+}
 
 const blogSchema = new Schema({
     title: {
@@ -12,7 +17,7 @@ const blogSchema = new Schema({
     },
     date: {
         type: String,
-        required: "true"
+        required: "true",
     }
 });
 
