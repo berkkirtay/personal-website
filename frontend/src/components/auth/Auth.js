@@ -11,27 +11,31 @@ export const Auth = ({ isAuthorized, setAuthorization }) => {
     const [otpScreen, setOTPScreen] = useState(false);
     let navigate = useHistory();
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+        const hashedToken = sha256(token).toString();
         if (otpScreen === false) {
-            const hashedToken = sha256(token).toString();
-            setAuth(hashedToken, "", setOTP, setAuthorization);
-            if (otp !== "") {
-                setOTP("");
+            const result = await setAuth(hashedToken, "");
+            if (result === "otp") {
                 setOTPScreen(true);
             }
-        }
-        else if (otpScreen === true) {
-            const hashedToken = sha256(token).toString();
-            setAuth(hashedToken, otp, setOTP, setAuthorization);
-            setToken('');
-            setOTP('');
-            alert("User is authorized successfully!");
-            navigate.push("/blogs");
+            else {
+                alert("Wrong credentials!");
+            }
         }
         else {
-            alert("Wrong credentials!");
-            navigate.push("/blogs");
+            const result = await setAuth(hashedToken, otp);
+            if (result === "authorized") {
+                setAuthorization(true);
+                alert("You are authorized successfully!");
+                navigate.push("/blog");
+                setToken('');
+                setOTP('');
+                setOTPScreen(false);
+            }
+            else {
+                alert("Wrong otp!");
+            }
         }
     };
 
@@ -42,32 +46,40 @@ export const Auth = ({ isAuthorized, setAuthorization }) => {
         navigate.push("/authorization");
     };
 
-    return (
-        <div>
-            {isAuthorized === true ? (
+    if (isAuthorized === true) {
+        return (
+            <div>
                 <form className="contactForm" onSubmit={onEnd}>
                     <label>You are already authorized. Do you want to end this session?</label>
                     <input id="send" type="submit" value="End Session" />
                 </form>
-            ) :
-                (
-                    <form className="contactForm" onSubmit={onSubmit}>
-                        <label>Authorization token:</label>
-                        <input type="text" name="token" required
-                            value={token} onChange={(e) => setToken(e.target.value)} />
-                        <input id="send" type="submit" value="Submit" />
-                    </form>
-                )
-            }
-            {otpScreen && (
-                <form className="contactForm" onSubmit={onSubmit}>
-                    <label>OTP has been sent to your mail address. Enter OTP here:</label>
-                    <input type="text" name="token" required
-                        value={otp} onChange={(e) => setOTP(e.target.value)} />
-                    <input id="send" type="submit" value="Submit" />
-                </form>
-            )}
-            <Footer />
-        </div >
-    );
+                <Footer />
+            </div>
+        );
+    }
+    else {
+        return (
+            <div>
+                {otpScreen === true ?
+                    (
+                        <form className="contactForm" onSubmit={onSubmit}>
+                            <label>OTP has been sent to your mail address. Enter OTP here:</label>
+                            <input type="text" name="token" required
+                                value={otp} onChange={(e) => setOTP(e.target.value)} />
+                            <input id="send" type="submit" value="Submit" />
+                        </form>
+                    )
+                    :
+                    (
+                        <form className="contactForm" onSubmit={onSubmit}>
+                            <label>Authorization token:</label>
+                            <input type="text" name="token" required
+                                value={token} onChange={(e) => setToken(e.target.value)} />
+                            <input id="send" type="submit" value="Submit" />
+                        </form>
+                    )}
+                <Footer />
+            </div>
+        );
+    }
 };

@@ -8,7 +8,7 @@ export const readBlogContent = async (id: string) => {
 
 export const deleteBlogContent = async (id: string) => {
     const relativePath = path.resolve('./public/blogs');
-    fs.unlink(path.join(relativePath, id + ".md"), (err) => {
+    return fs.unlink(path.join(relativePath, id + ".md"), (err) => {
         if (err) {
             throw err;
         }

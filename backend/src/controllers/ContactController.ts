@@ -11,7 +11,7 @@ const sendMail = async (name: string, email: string, text: string) => {
         text: text
     };
 
-    transporter.sendMail(mailOptions, (err, info) => {
+    return transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
             throw err;
         } else {

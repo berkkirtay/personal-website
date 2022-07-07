@@ -2,8 +2,8 @@ import axios from "axios";
 
 const api = process.env.REACT_APP_SERVER_URL;
 
-export const getBlogs = (setBlogs) => {
-    axios.get(api + '/getblogs')
+export const getBlogs = async (setBlogs) => {
+    return axios.get(api + '/getblogs')
         .then(response => {
             if (response.status === 200) {
                 setBlogs(response.data);
@@ -16,8 +16,8 @@ export const getBlogs = (setBlogs) => {
         })
 }
 
-export const getBlog = (blogId, setBlog) => {
-    axios.get(api + '/blog/' + blogId)
+export const getBlog = async (blogId, setBlog) => {
+    return axios.get(api + '/blog/' + blogId)
         .then(response => {
             if (response.status === 200) {
                 setBlog(response.data);
@@ -25,13 +25,13 @@ export const getBlog = (blogId, setBlog) => {
             else {
                 throw response.status;
             }
-        }).catch(function (error) {
+        }).catch((error) => {
             console.log(error);
         })
 }
 
-export const postBlog = (blogBody) => {
-    axios.post(api + '/postblog', blogBody)
+export const postBlog = async (blogBody) => {
+    return axios.post(api + '/postblog', blogBody)
         .then(response => {
             if (response.status === 200) {
                 alert("Blog is sent!");
@@ -45,8 +45,8 @@ export const postBlog = (blogBody) => {
         })
 }
 
-export const deleteBlog = (blogId) => {
-    axios.get(api + '/deleteblog/' + blogId)
+export const deleteBlog = async (blogId) => {
+    return axios.get(api + '/deleteblog/' + blogId)
         .then(response => {
             if (response.status === 200) {
                 console.log("Blog with id: " + blogId + " is deleted.");
@@ -61,12 +61,12 @@ export const deleteBlog = (blogId) => {
         })
 }
 
-export const updateBlog = (blogId, blogBody) => {
+export const updateBlog = async (blogId, blogBody) => {
     const body = {
         "blogId": blogId,
         "blog": blogBody
     }
-    axios.post(api + '/updateblog', body)
+    return axios.post(api + '/updateblog', body)
         .then(response => {
             if (response.status === 200) {
                 alert("Blog is updated!");
@@ -75,71 +75,62 @@ export const updateBlog = (blogId, blogBody) => {
                 throw response.status;
             }
         })
-        .catch(function (error) {
+        .catch((error) => {
             console.log(error);
         })
 }
 
-export const sendEmail = (emailBody) => {
-    axios.post(api + '/contact', emailBody).then(response => {
+export const sendEmail = async (emailBody) => {
+    return axios.post(api + '/contact', emailBody).then(response => {
         if (response.status === 200) {
             alert("Your message has been sent. Thanks!")
-            console.log(response.data);
         }
         else {
             throw response.status;
         }
 
-    }).catch(function (error) {
+    }).catch((error) => {
         console.log(error);
     })
 }
 
-export const setAuth = (token, otp, setOTP, setAuthorization) => {
-    axios.defaults.withCredentials = true;
-    axios.post(api + '/auth/authorize', {
-        "Authorization": token,
-        "OTP": otp
-    }).then(response => {
+export const setAuth = async (token, otp, setAuthorization) => {
+    try {
+        const response = await axios.post(api + '/auth/authorize', {
+            "Authorization": token,
+            "OTP": otp
+        });
         if (response.status === 200) {
-            if (response.data.status === "otp") {
-                setOTP("otp");
-            }
-            else {
-                setAuthorization(true);
-            }
+            return response.data.status;
         }
-        else {
-            setAuthorization(false);
-        }
-    }).catch(function (error) {
-        console.log(error);
-    })
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 }
 
-export const checkAuth = (setAuthorization) => {
-    axios.defaults.withCredentials = true;
-    axios.get(api + '/auth/checkauth')
+export const checkAuth = async (setAuthorization) => {
+    return axios.get(api + '/auth/checkauth')
         .then(response => {
-            if (response.status === 200) {
+            if (response.data.result === "Authorized") {
                 setAuthorization(true);
             }
             else {
                 setAuthorization(false);
             }
-        }).catch(function (error) {
+        }).catch((error) => {
             console.log(error);
         })
 }
 
-export const endAuth = (setAuthorization) => {
-    axios.defaults.withCredentials = true;
-    axios.get(api + '/auth/destroy')
+export const endAuth = async (setAuthorization) => {
+    return axios.get(api + '/auth/destroy')
         .then(response => {
             if (response.status === 200) {
                 setAuthorization(false);
             }
-        }).catch(function (error) {
+        }).catch((error) => {
             console.log(error);
         })
 }

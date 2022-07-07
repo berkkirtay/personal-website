@@ -6,7 +6,7 @@ export const ProtectedBlogController = express.Router();
 export const UnprotectedBlogController = express.Router();
 
 UnprotectedBlogController.get("/getblogs", async (req: express.Request, res: express.Response) => {
-    Blog.find((err: any, blogs: any) => {
+    return Blog.find((err: any, blogs: any) => {
         if (err) {
             res.status(500).send(err);
             console.log(err);
@@ -22,7 +22,7 @@ UnprotectedBlogController.get("/getblogs", async (req: express.Request, res: exp
 
 UnprotectedBlogController.get("/blog/:blogId", async (req: express.Request, res: express.Response) => {
     const param = req.params.blogId;
-    Blog.findOne({ _id: param })
+    return Blog.findOne({ _id: param })
         .then(async (data) => {
             if (data) {
                 const content = await readBlogContent(data._id.toString());
@@ -53,7 +53,7 @@ ProtectedBlogController.post("/postblog", async (req: express.Request, res: expr
         blog.title = req.body.title;
         blog.shortContent = req.body.content.slice(0, 200);
         blog.date = req.body.date;
-        blog.save(async (err: any, success) => {
+        return blog.save(async (err: any, success) => {
             if (err) {
                 res.status(500).send({ err: err });
                 console.log(err);
@@ -71,7 +71,7 @@ ProtectedBlogController.post("/postblog", async (req: express.Request, res: expr
 
 ProtectedBlogController.get("/deleteblog/:blogId", async (req: express.Request, res: express.Response) => {
     if (req.params.blogId) {
-        Blog.deleteOne({ _id: req.params.blogId }).then(async (data) => {
+        return Blog.deleteOne({ _id: req.params.blogId }).then(async (data) => {
             if (data) {
                 await deleteBlogContent(req.params.blogId);
                 res.status(200).send(data);
@@ -95,7 +95,7 @@ ProtectedBlogController.post("/updateblog", async (req: express.Request, res: ex
         req.body.blog.date &&
         req.body.blog.content
     ) {
-        Blog.findOneAndUpdate({ _id: req.body.blogId }, {
+        return Blog.findOneAndUpdate({ _id: req.body.blogId }, {
             title: req.body.blog.title,
             date: req.body.blog.date,
             shortContent: req.body.blog.content.slice(0, 200)

@@ -9,14 +9,14 @@ const Contact = () => {
     const [text, setText] = useState("");
     let navigate = useHistory();
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const emailBody = {
             name: name,
             email: email,
             text: text
         };
-        sendEmail(emailBody);
+        await sendEmail(emailBody);
         setName('');
         setEmail('');
         setText('');

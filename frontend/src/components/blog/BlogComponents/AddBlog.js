@@ -10,11 +10,13 @@ export const AddBlog = ({ refresher, updateFlag }) => {
     let navigate = useHistory();
     const { _id } = useParams();
 
-
     useEffect(() => {
-        if (updateFlag === true) {
-            getBlog(_id, setBlog);
+        const getUpdatedBlogData = async () => {
+            if (updateFlag === true) {
+                await getBlog(_id, setBlog);
+            }
         }
+        getUpdatedBlogData();
     }, [_id, updateFlag]);
 
     useEffect(() => {
@@ -22,11 +24,10 @@ export const AddBlog = ({ refresher, updateFlag }) => {
             setTitle(blog?.title);
             setDate(blog?.date);
             setContent(blog?.content);
-            console.log(blog)
         }
     }, [blog])
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const blogBody = {
             "title": title,
@@ -34,10 +35,10 @@ export const AddBlog = ({ refresher, updateFlag }) => {
             "date": date
         }
         if (updateFlag === true) {
-            updateBlog(_id, blogBody);
+            await updateBlog(_id, blogBody);
         }
         else {
-            postBlog(blogBody);
+            await postBlog(blogBody);
         }
 
         setTitle('');

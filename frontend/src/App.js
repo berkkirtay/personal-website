@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { useEffect, useState } from "react";
+import axios from "axios";
 import Contact from "./components/contact/Contact";
 import Home from "./components/home/Home"
 import Blogs from "./components/blog/Blogs";
@@ -11,10 +12,11 @@ import { checkAuth } from "./helpers/RequestManager";
 import { Auth } from "./components/auth/Auth";
 
 const App = () => {
+  axios.defaults.withCredentials = true;
+
   const [blogs, setBlogs] = useState([{}]);
   const [refresh, setRefresh] = useState(true);
   const [isAuthorized, setAuthorization] = useState(false);
-
 
   useEffect(() => {
     checkAuth(setAuthorization);
