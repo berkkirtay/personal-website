@@ -9,8 +9,9 @@ const Home = () => {
                         <img src={pfp} alt="pfp" width="90%" />
                     </div>
                     <div id="profile-child-desc">
-                        Hi, I am a junior Computer Science student at Marmara University. I write software. I love
-                        learning about anything related to computer science and I am always eager to expand my expertise!
+                        Hi, I am a senior Computer Science student at Marmara University. I write software.
+                        I love learning about anything related to computer science and I am always eager to expand my expertise!
+                        I can provide software solutions based on my portfolio. Please feel free to reach out!
                     </div>
                 </div>
 

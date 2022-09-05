@@ -19,7 +19,7 @@ export const Nav = () => {
         };
     }, []);
     return (
-        <div >
+        <div>
             <link
                 rel="stylesheet"
                 href="https://pro.fontawesome.com/releases/v5.14.0/css/all.css"
