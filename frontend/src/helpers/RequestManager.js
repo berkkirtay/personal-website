@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import axios from "axios";
 
 const api = process.env.REACT_APP_SERVER_URL;

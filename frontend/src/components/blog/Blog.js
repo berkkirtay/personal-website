@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getBlog } from '../../helpers/RequestManager'

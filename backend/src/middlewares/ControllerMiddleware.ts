@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import * as services from "./HttpMiddleware"
 import express from "express";
 import { AuthorizationController } from "../controllers/AuthorizationController";

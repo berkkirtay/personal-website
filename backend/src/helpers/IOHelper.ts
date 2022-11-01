@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import path from "path";
 import fs from "fs";
 

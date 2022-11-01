@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { useState } from "react"
 import { useHistory } from "react-router-dom";
 import { sendEmail } from "../../helpers/RequestManager";

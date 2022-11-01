@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { model, Schema, Document } from 'mongoose';
 
 export interface IOTPModel extends Document {

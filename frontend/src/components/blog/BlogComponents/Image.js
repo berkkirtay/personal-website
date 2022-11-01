@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 const Image = ({ url }) => {
     return (
         <img src={url}

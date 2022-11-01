@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { getBlog, postBlog, updateBlog } from "../../../helpers/RequestManager";

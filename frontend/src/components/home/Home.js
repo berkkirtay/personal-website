@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import Footer from "../footer/Footer";
 import pfp from "../../assets/img/pfp.jpg";
 const Home = () => {
@@ -11,7 +13,7 @@ const Home = () => {
                     <div id="profile-child-desc">
                         Hi, I am a senior Computer Science student at Marmara University. I write software.
                         I love learning about anything related to computer science and I am always eager to expand my expertise!
-                        I can provide software solutions based on my portfolio. Please feel free to reach out!
+                        Please feel free to reach out for any question or business offer!
                     </div>
                 </div>
 
@@ -65,6 +67,10 @@ const Home = () => {
 
                     <li>
                         <a href="https://github.com/berkkirtay/personal-website" target="_blank" rel="noopener noreferrer">Source Code of This Website <i style={{ zoom: "0.9" }} className="fas fa-external-link-alt"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="https://github.com/berkkirtay/adaptive-genetic-algorithm-for-n-queens" target="_blank" rel="noopener noreferrer">An Adaptive Genetic Algorithm for N-Queens Problem <i style={{ zoom: "0.9" }} className="fas fa-external-link-alt"></i></a>
                     </li>
                 </ul>
                 <Footer />

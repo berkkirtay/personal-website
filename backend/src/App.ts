@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { app } from "./middlewares/ControllerMiddleware";
 import dotenv from "dotenv";
 dotenv.config();

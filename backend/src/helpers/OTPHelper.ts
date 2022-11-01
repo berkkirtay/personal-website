@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { randomInt } from "crypto";
 import { OTP } from "../models/OTPModel";
 import { transporter } from "../services/MailService";

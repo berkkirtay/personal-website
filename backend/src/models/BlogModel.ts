@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { model, Schema, Model, Document } from 'mongoose';
 
 interface IBlog extends Document {

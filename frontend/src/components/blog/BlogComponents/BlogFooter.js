@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 const BlogFooter = ({ blog }) => {
     return (
         <div className="blogFooter" style={{ paddingBottom: "4%" }}>

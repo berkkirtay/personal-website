@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import express from "express";
 import { transporter } from "../services/MailService";
 

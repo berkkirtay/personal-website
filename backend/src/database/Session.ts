@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import mongoose from "mongoose";
 import session from "express-session";
 import store from "connect-mongodb-session";

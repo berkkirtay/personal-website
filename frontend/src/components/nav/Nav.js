@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react';
 import { Squash as Hamburger } from 'hamburger-react'

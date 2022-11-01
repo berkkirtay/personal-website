@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import express from "express";
 import { Session } from "../database/Session";
 import cors from "cors";

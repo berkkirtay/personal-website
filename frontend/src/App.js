@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";

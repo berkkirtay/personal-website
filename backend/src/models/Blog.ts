@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 export class Blog {
     private _id: string;
     private content: string;

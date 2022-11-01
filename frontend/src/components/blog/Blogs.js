@@ -1,3 +1,5 @@
+// Copyright(c) 2022 Berk Kırtay
+
 import { Link } from "react-router-dom"
 import { useEffect } from 'react';
 import BlogsTask from "./BlogsTask";
