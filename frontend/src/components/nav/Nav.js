@@ -32,16 +32,10 @@ export const Nav = () => {
             </Link>
             <div style={{ float: "right" }}>
                 <ul className="nav">
+                    <li className="nav" style={{ float: "right" }}><Link to="/blog">My Blog</Link></li>
+                    <li className="nav" style={{ float: "right" }}><Link to="/work">My Work</Link></li>
+                    <li className="nav" style={{ float: "right" }}><Link to="/experience">My Experience</Link></li>
                     <li className="nav" style={{ float: "right" }}><Link to="/contact">Contact me</Link>
-                    </li>
-                    <li className="nav" style={{ float: "right" }}><Link to="/blog">My Blog</Link>
-                    </li>
-                    <li className="nav" style={{ float: "right" }}>
-                        <a href="https://github.com/berkkirtay" target="_blank" rel="noopener noreferrer">My GitHub <i style={{ zoom: "0.8" }} className="fas fa-external-link-alt"></i></a>
-                    </li>
-
-                    <li className="nav" style={{ float: "right" }}>
-                        <a href="https://www.linkedin.com/in/berkkirtay/" target="_blank" rel="noopener noreferrer">My Linkedin <i style={{ zoom: "0.8" }} className="fas fa-external-link-alt"></i></a>
                     </li>
                 </ul>
             </div>

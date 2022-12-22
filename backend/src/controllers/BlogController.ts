@@ -19,6 +19,9 @@ UnprotectedBlogController.get("/getblogs", async (req: express.Request, res: exp
         else {
             res.status(404).send();
         }
+    }).clone().catch((err: any) => {
+        console.log(err);
+        res.status(404).send();
     });
 });
 
@@ -110,6 +113,9 @@ ProtectedBlogController.post("/updateblog", async (req: express.Request, res: ex
                 await uploadBlogContent(req.body.blog.content, req.body.blogId);
                 res.status(200).send({ result: "Success" });
             }
+        }).clone().catch((err: any) => {
+            console.log(err);
+            res.status(404).send();
         });
     }
     else {

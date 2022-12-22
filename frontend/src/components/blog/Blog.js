@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { getBlog } from '../../helpers/RequestManager'
 import { deleteBlog } from '../../helpers/RequestManager'
 import BlogFooter from './BlogComponents/BlogFooter';
-import ReactMarkdown from 'react-markdown'
+import Markdown from "markdown-to-jsx"
 
 const Blog = ({ refresher, isAuthorized }) => {
     const { _id } = useParams();
@@ -25,6 +25,7 @@ const Blog = ({ refresher, isAuthorized }) => {
         getBlog(_id, setBlog);
     }, [_id]);
 
+
     return (
         <div className='blog'>
             {isAuthorized &&
@@ -43,9 +44,10 @@ const Blog = ({ refresher, isAuthorized }) => {
                 {blog !== undefined &&
                     <>
                         <h1 style={{ color: "rgb(41, 161, 103)" }}>{blog.title}</h1>
-                        <ReactMarkdown >
-                            {blog.content}
-                        </ReactMarkdown>
+                        <Markdown children={blog.content} options={{
+                            forceInlineBlock: true
+                        }} />
+
                         <hr />
                         <BlogFooter blog={blog} />
 

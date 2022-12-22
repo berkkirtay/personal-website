@@ -12,6 +12,8 @@ import { Nav } from "./components/nav/Nav";
 import { AddBlog } from "./components/blog/BlogComponents/AddBlog";
 import { checkAuth } from "./helpers/RequestManager";
 import { Auth } from "./components/auth/Auth";
+import Work from "./components/work/Work";
+import Experience from "./components/experience/Experience";
 
 const App = () => {
   axios.defaults.withCredentials = true;
@@ -45,12 +47,21 @@ const App = () => {
           <Route path="/updateblog/:_id">
             <AddBlog refresher={() => setRefresh(!refresh)} updateFlag={true} />
           </Route>
+
+          <Route path="/authorization">
+            <Auth isAuthorized={isAuthorized} setAuthorization={setAuthorization} />
+          </Route>
+
           <Route path="/contact">
             <Contact />
           </Route>
 
-          <Route path="/authorization">
-            <Auth isAuthorized={isAuthorized} setAuthorization={setAuthorization} />
+          <Route path="/work">
+            <Work />
+          </Route>
+
+          <Route path="/experience">
+            <Experience />
           </Route>
 
           <Route path="/">
